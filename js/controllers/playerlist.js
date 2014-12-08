@@ -1,5 +1,5 @@
 angular.module('gameapi')
-  .controller('PlayersController', ['$scope', 'PlayersService', function($scope, PlayersService) {
+  .controller('PlayerListController', ['$scope', 'PlayersService', function($scope, PlayersService) {
     $scope.players = PlayersService.query();
     
     $scope.sendMessage = function (player) {

@@ -21,7 +21,7 @@ angular.module('gameapi', ['ngResource'])
       
       ban: {
         method: 'POST',
-        url: 'api/players/:playerID/kick',
+        url: 'api/players/:playerID/ban',
         params: { playerID: '@playerID' }
       }
     });
