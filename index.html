@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="gameapi">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +13,12 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/moment.min.js"></script>
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/services/players.js"></script>
+    <script src="js/controllers/players.js"></script>
   </head>
-  <body>
+  <body ng-controller="PlayersController">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -84,7 +88,7 @@
         </div>
       </div>
       
-      <h1>Players <small>(2/32)</small></h1>
+      <h1>Players <small>({{players.length}}/32)</small></h1>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -96,7 +100,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <!--<tr>
             <td>0</td>
             <td>Didz</td>
             <td>12</td>
@@ -117,12 +121,12 @@
               <button type="button" class="btn btn-danger btn-sm">Kick</button>
               <button type="button" class="btn btn-danger btn-sm">Ban</button>
             </td>
-          </tr>
+          </tr>-->
           <tr ng-repeat="pl in players">
-            <td>{{p.id}}</td>
+            <td>{{pl.id}}</td>
             <td>{{pl.name}}</td>
             <td>{{pl.score}}</td>
-            <td>{{pl.playingtime | duration}}</td>
+            <td>{{pl.playingTime}}</td>
             <td>
               <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl)">Send message</button>
               <button type="button" class="btn btn-danger btn-sm" ng-click="kick(pl)">Kick</button>
