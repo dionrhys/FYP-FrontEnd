@@ -1,4 +1,4 @@
-angular.module('gameapi', ['ngResource'])
+angular.module('gameapi')
   .factory('PlayersService', ['$resource', function ($resource) {
     return $resource('api/players', {}, {
       query: {
