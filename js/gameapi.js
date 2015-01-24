@@ -1,1 +1,1 @@
-angular.module('gameapi', ['ngResource']);
+angular.module('gameapi', ['ngResource', 'luegg.directives']);
