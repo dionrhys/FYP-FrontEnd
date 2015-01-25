@@ -56,14 +56,14 @@
             <tr>
               <td><strong>{{server.name}} <span class="label label-success" ng-show="server.state === 'online'">Online</span><span class="label label-danger" ng-show="server.state === 'offline'">Offline</span></strong></td>
               <td><strong>Players:</strong> {{server.numPlayers}}/{{server.maxPlayers}}</td>
-              <td><strong>Map:</strong> {{server.mapName}}</td>
+              <td><strong>Map:</strong> {{server.mapName ? server.mapName : 'N/A'}}</td>
               <td><strong>Game mode:</strong> {{server.gameMode}}</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div ng-controller="ConsoleController">
-        <pre class="pre-scrollable" scroll-glue>{{ console.text }}</pre>
+        <pre class="pre-scrollable" scroll-glue>{{console.text}}</pre>
         <form ng-submit="executeCommand()">
           <input type="text" class="form-control" placeholder="Enter your command here" ng-model="inputText">
         </form>

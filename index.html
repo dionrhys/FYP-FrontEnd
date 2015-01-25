@@ -48,51 +48,49 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div ng-controller="ServerStatusController">
-        <h1>Server Status <small><span class="label label-success" ng-show="server.state === 'online'">Online</span><span class="label label-danger" ng-show="server.state === 'offline'">Offline</span></small></h1>
-        <div class="row">
-          <div class="col-sm-7 col-md-8 col-lg-9">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <h2></h2>
-                <p><strong>Name:</strong> {{server.name}}</p>
-                <p><strong>Max Players:</strong> {{server.maxPlayers}}</p>
-                <p><strong>Current map:</strong> <a href="#">{{server.mapName}}</a></p>
-                <p><strong>Game mode:</strong> {{server.gameMode}}</p>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <h2></h2>
-                <p><strong>Server Uptime:</strong> {{server.uptime}}</p>
-                <p><strong>Address:</strong> {{server.address}}</p>
-                <p><strong>Game:</strong> {{server.game}}</p>
-                <p><strong>Version:</strong> {{server.version}}</p>
-                <p><strong>Platform:</strong> {{server.platform}}</p>
-                <p>
-                  <button type="button" class="btn btn-default btn-block" ng-click="restart()"><span class="glyphicon glyphicon-repeat"></span> Restart</button>
-                  <button type="button" class="btn btn-default btn-block" ng-click="shutdown()"><span class="glyphicon glyphicon-off"></span> Shutdown</button>
-                </p>
-              </div>
+    <div class="container" ng-controller="ServerStatusController">
+      <h1>Server Status <small><span class="label label-success" ng-show="server.state === 'online'">Online</span><span class="label label-danger" ng-show="server.state === 'offline'">Offline</span></small></h1>
+      <div class="row">
+        <div class="col-sm-7 col-md-8 col-lg-9">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h2></h2>
+              <p><strong>Name:</strong> {{server.name}}</p>
+              <p><strong>Max Players:</strong> {{server.maxPlayers}}</p>
+              <p><strong>Current map:</strong> {{server.mapName ? server.mapName : 'N/A'}}</p>
+              <p><strong>Game mode:</strong> {{server.gameMode}}</p>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <h2></h2>
+              <p><strong>Server Uptime:</strong> {{server.uptime | duration}}</p>
+              <p><strong>Address:</strong> {{server.address}}</p>
+              <p><strong>Game:</strong> {{server.game}}</p>
+              <p><strong>Version:</strong> {{server.version}}</p>
+              <p><strong>Platform:</strong> {{server.platform}}</p>
+              <p>
+                <button type="button" class="btn btn-default btn-block" ng-click="restart()"><span class="glyphicon glyphicon-repeat"></span> Restart</button>
+                <button type="button" class="btn btn-default btn-block" ng-click="shutdown()"><span class="glyphicon glyphicon-off"></span> Shutdown</button>
+              </p>
             </div>
           </div>
-          <div class="col-sm-5 col-md-4 col-lg-3">
-            <!--<div class="well">-->
-              <h2></h2>
-              <p><img class="img-responsive img-rounded" src="img/levelshots/mp/ctf4.jpg"></p>
-              <p><strong>Current map:</strong> {{server.mapName}}</p>
-              <p><strong>Game mode:</strong> {{server.gameMode}}</p>
-              <p>
-                <button type="button" class="btn btn-default btn-sm">Change map</button>
-                <button type="button" class="btn btn-default btn-sm">Change game mode</button>
-              </p>
-              <!--<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-repeat"></span> Restart</button>
-              <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> Shutdown</button>-->
-            <!--</div>-->
-          </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-lg-3">
+          <!--<div class="well">-->
+            <h2></h2>
+            <p><img class="img-responsive img-rounded" ng-src="img/levelshots/{{server.mapName ? server.mapName : 'unknownmap_mp'}}.jpg"></p>
+            <p><strong>Current map:</strong> {{server.mapName ? server.mapName : 'N/A'}}</p>
+            <p><strong>Game mode:</strong> {{server.gameMode}}</p>
+            <p>
+              <button type="button" class="btn btn-default btn-sm">Change map</button>
+              <button type="button" class="btn btn-default btn-sm">Change game mode</button>
+            </p>
+            <!--<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-repeat"></span> Restart</button>
+            <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> Shutdown</button>-->
+          <!--</div>-->
         </div>
       </div>
       <div ng-controller="PlayerListController">
-        <h1>Players <small>({{players.length}}/32)</small></h1>
+        <h1>Players <small>({{players.length}}/{{server.maxPlayers}})</small></h1>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -104,35 +102,13 @@
             </tr>
           </thead>
           <tbody>
-            <!--<tr>
-              <td>0</td>
-              <td>Didz</td>
-              <td>12</td>
-              <td>1 hour, 27 minutes, 57 seconds</td>
-              <td>
-                <button type="button" class="btn btn-default btn-sm">Send message</button>
-                <button type="button" class="btn btn-danger btn-sm">Kick</button>
-                <button type="button" class="btn btn-danger btn-sm">Ban</button>
-              </td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Raz0r</td>
-              <td>19</td>
-              <td>1 hour, 32 minutes, 2 seconds</td>
-              <td>
-                <button type="button" class="btn btn-default btn-sm">Send message</button>
-                <button type="button" class="btn btn-danger btn-sm">Kick</button>
-                <button type="button" class="btn btn-danger btn-sm">Ban</button>
-              </td>
-            </tr>-->
             <tr ng-repeat="pl in players">
               <td>{{pl.id}}</td>
               <td>{{pl.name}}</td>
               <td>{{pl.score}}</td>
-              <td>{{pl.playingTime}}</td>
-              <td>
-                <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl)">Send message</button>
+              <td>{{pl.playingTime | duration}}</td>
+              <td style="width: 0; white-space: nowrap;">
+                <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl, 'Test')">Send message</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="kick(pl)">Kick</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="ban(pl)">Ban</button>
               </td>
