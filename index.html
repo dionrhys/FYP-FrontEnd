@@ -97,6 +97,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Score</th>
+              <th>Ping</th>
               <th>Playing Time</th>
               <th></th>
             </tr>
@@ -104,8 +105,9 @@
           <tbody>
             <tr ng-repeat="pl in players">
               <td>{{pl.id}}</td>
-              <td>{{pl.name}}</td>
+              <td>{{pl.name}} <span class="label label-default" ng-show="pl.isBot">Bot</span></td>
               <td>{{pl.score}}</td>
+              <td>{{pl.ping >= 0 ? pl.ping + ' ms' : 'N/A'}}</td>
               <td>{{pl.playingTime | duration}}</td>
               <td style="width: 0; white-space: nowrap;">
                 <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl, 'Test')">Send message</button>
