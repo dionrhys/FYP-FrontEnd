@@ -110,7 +110,7 @@
               <td>{{pl.ping >= 0 ? pl.ping + ' ms' : 'N/A'}}</td>
               <td>{{pl.playingTime | duration}}</td>
               <td style="width: 0; white-space: nowrap;">
-                <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl, 'Test')">Send message</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click="sendMessage(pl)">Send message</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="kick(pl)">Kick</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="ban(pl)">Ban</button>
               </td>

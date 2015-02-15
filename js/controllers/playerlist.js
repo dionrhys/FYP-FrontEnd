@@ -1,5 +1,5 @@
 angular.module('gameapi')
-  .controller('PlayerListController', ['$scope', '$timeout', 'PlayersService', function($scope, $timeout, PlayersService) {
+  .controller('PlayerListController', ['$scope', '$timeout', '$window', 'PlayersService', function($scope, $timeout, $window, PlayersService) {
     $scope.players = [];
     
     var refreshPromise = null;
@@ -19,7 +19,9 @@ angular.module('gameapi')
     };
     refresh();
     
-    $scope.sendMessage = function (player, message) {
+    $scope.sendMessage = function (player) {
+      var message = $window.prompt('Message to send to the player:');
+      if (message === null) return;
       PlayersService.sendMessage({ playerID: player.id }, { message: message }, function () {
         // Success
         refresh();
