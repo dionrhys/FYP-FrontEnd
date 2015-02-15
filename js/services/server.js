@@ -17,6 +17,24 @@ angular.module('gameapi')
         method: 'POST',
         params: {},
         url: 'api/server/shutdown'
+      },
+      
+      broadcast: {
+        method: 'POST',
+        params: {},
+        url: 'api/server/broadcast'
+      },
+      
+      changeLevel: {
+        method: 'POST',
+        params: {},
+        url: 'api/server/level'
+      },
+      
+      changeGameMode: {
+        method: 'POST',
+        params: {},
+        url: 'api/server/gamemode'
       }
     });
   }]);

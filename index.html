@@ -81,8 +81,9 @@
             <p><strong>Current map:</strong> {{server.mapName ? server.mapName : 'N/A'}}</p>
             <p><strong>Game mode:</strong> {{server.gameMode}}</p>
             <p>
-              <button type="button" class="btn btn-default btn-sm">Change map</button>
-              <button type="button" class="btn btn-default btn-sm">Change game mode</button>
+              <button type="button" class="btn btn-default btn-sm" ng-click="changeLevel()">Change map</button>
+              <button type="button" class="btn btn-default btn-sm" ng-click="changeGameMode()">Change game mode</button>
+              <button type="button" class="btn btn-default btn-sm" ng-click="broadcastMessage()">Broadcast message</button>
             </p>
             <!--<button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-repeat"></span> Restart</button>
             <button type="button" class="btn btn-default btn-block"><span class="glyphicon glyphicon-off"></span> Shutdown</button>-->
